@@ -12,7 +12,7 @@ JSON: Json Object,
 skip: array *Optional
 
 
-converter(name, JSON, skip(array) )
+converter(name, JSON, skip)
 
 ```
 
@@ -34,11 +34,10 @@ const input = {
       rating:'11/10',
       date: new Date()
     },
-
   }
 }
 
-console.log(converter('User',input,['password']))
+console.log(converter('User', input, ['password']))
 //`
 // OutOput:
 // type User {
@@ -48,11 +47,11 @@ console.log(converter('User',input,['password']))
 //   age: Int
 //    apperances: UserApperances
 //  }
-// 
+//
 //  type UserApperances {
 //    checkItOut: UserApperancesCheckitout
 //  }
-// 
+//
 //  type UserApperancesCheckitout {
 //   type: String
 //   rating: String
@@ -64,4 +63,3 @@ console.log(converter('User',input,['password']))
 
 **Note on Arrays containing Objects:**
 The first item in an array will be picked and used, if subsequent items contains other items they will be lost.
-

@@ -32,7 +32,7 @@ const recursiveRead = function(name, obj, path='') {
     const itemName = name+_.capitalize(item)
     let itemPath = path+extra+item;
       if(typeOf(obj[item]) === 'object') {
-        Objects.push({name:itemName, path:itemPath });
+        Objects.push({name:cleanName(itemName), path:itemPath });
         const items = recursiveRead(itemName, obj[item], itemPath)
         if(items) Objects.push(items);
       }
@@ -56,7 +56,7 @@ const readObject = function (name, obj, skip) {
   let returnObj = '';
 
   const length = Object.keys(obj).length;
-returnObj+=`\n type ${name.replace(/[^a-zA-Z ]/, "")} { \n`
+returnObj+=`\n type ${cleanName(name)} { \n`
   _.forEach(Object.keys(obj), (item, index)=>{
     if(skip.includes(item)) return
     if(item === '_id') returnObj = setRow(item, 'ID!', returnObj);
@@ -78,7 +78,7 @@ returnObj+=`\n type ${name.replace(/[^a-zA-Z ]/, "")} { \n`
           returnObj = setRow(item, 'String', returnObj);
         break;
         case 'object':
-        returnObj += `   ${item}: ${name+_.capitalize(item)} \n`
+        returnObj += `   ${item}: ${cleanName(name)+_.capitalize(cleanName(item))} \n`
         break;
       }
     }
@@ -86,7 +86,9 @@ returnObj+=`\n type ${name.replace(/[^a-zA-Z ]/, "")} { \n`
   return setClose(returnObj);
 }
 
-
+const cleanName = function(name){
+  return name.replace(/[^a-zA-Z ]/ig, "")
+}
 const setClose = function(rootOutput) {
   return rootOutput+=` }\n`; }
 
