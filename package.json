@@ -1,0 +1,23 @@
+{
+  "name": "graphql-apollo-json-to-schema",
+  "version": "1.0.0",
+  "description": "recursively converts a JSON object to a Schema",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaywalklabs/graphql-apollo-json-to-schema.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaywalklabs/graphql-apollo-json-to-schema/issues"
+  },
+  "homepage": "https://github.com/jaywalklabs/graphql-apollo-json-to-schema#readme",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "typeof": "^1.0.0"
+  }
+}
